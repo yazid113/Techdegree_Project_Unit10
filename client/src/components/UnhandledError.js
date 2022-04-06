@@ -4,8 +4,8 @@ export default class Error extends Component {
     render () {
         return (
             <div className='wrap'>
-                <h2>Unexpected Error</h2>
-                <p>Looks like an Unexpected Error has occured.</p>
+                <h2>Oooops Error</h2>
+                <p>An error has occured please try again.</p>
             </div>
         )
     }

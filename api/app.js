@@ -19,6 +19,12 @@ app.use(morgan('dev'));
 // Setup request body JSON parsing.
 app.use(express.json())
 app.use(cors())
+
+
+// Add routes.
+app.use('/api', routes);
+
+
 // setup a friendly greeting for the root route
 app.get('/', (req, res) => {
   res.json({
@@ -26,8 +32,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Add routes.
-app.use('/api', routes);
+
 
 // send 404 if no other route matched
 app.use((req, res) => {

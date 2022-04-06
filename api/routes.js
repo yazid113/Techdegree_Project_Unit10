@@ -14,6 +14,7 @@ const router = express.Router();
 router.get('/users',authenticateUser, asyncHandler(async (req, res) => {
   const user = req.currentUser;
     res.status(200).json({
+        id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         emailAddress: user.emailAddress
@@ -47,7 +48,11 @@ router.get('/courses', asyncHandler(async (req, res) => {
 // Route that returns a course.
 router.get('/courses/:id', asyncHandler(async (req, res) => {
     const course = await Course.findByPk(req.params.id, {
-        include: [{model: User,attributes: ['firstName', 'lastName', 'emailAddress']}
+        include: [            {
+            model: User,
+            as: 'User',
+            attributes: ['firstName', 'lastName', 'emailAddress'],
+        }
         ]
     });
 

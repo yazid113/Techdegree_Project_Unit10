@@ -6,7 +6,7 @@ export default class Error extends Component {
         return (
             <div className='wrap'>
                 <h2>Forbidden</h2>
-                <p>You are not allowed to access this page</p>
+                <p>Access denied</p>
                 <Link to='/'>Home</Link>
             </div>
         )

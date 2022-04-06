@@ -36,14 +36,23 @@ module.exports = (sequelize) => {
     },
   }, { sequelize });
 
-  Course.associate = (models) => {
-    Course.belongsTo(models.User, {
+ //Creates association with User model
+ Course.associate = (models) => {
+  Course.belongsTo(models.User, {
       foreignKey: {
-        fieldName: 'userId',
-        allowNull: false,
+          fieldName: 'userId',
+          allowNull: false,
+          validate: {
+              notNull : {
+                  msg: 'A user ID is required.'
+              },
+              notEmpty: {
+                  msg: 'Please provide a user ID'
+              }
+          }
       },
-    });
-  };
+  })
+}
 
   return Course;
 };
